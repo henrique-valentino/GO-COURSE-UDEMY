@@ -1,8 +1,9 @@
 version: '3.8'
 
 services:
-  db:
-    image: mysql:5.7
+  mysql:
+    image: mysql
+    container_name: mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 1234    
@@ -13,5 +14,14 @@ services:
       - "3306:3306"
     expose:
       - "3306"
+    networks:
+      backend:
+        aliases:
+          - "db_mysql"      
     volumes:
       - C:\docker\volumes\mysql:/var/lib/mysql
+
+
+networks:
+  backend:
+    driver: bridge
