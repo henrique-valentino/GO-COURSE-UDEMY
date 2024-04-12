@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234    
+      MYSQL_DATABASE: devbook
+      MYSQL_USER: golang
+      MYSQL_PASSWORD: golang
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - C:\docker\volumes\mysql:/var/lib/mysql
